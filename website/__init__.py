@@ -1,8 +1,13 @@
 from flask import Flask
+from flask_sqlaclchemy import SQLAlchemy
+
+db = SQLAlchemy()
+DB_NAME = "databse.db" 
 
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'FRGHTED5Kinf45v2'
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
 
     from .views import views
     from .auth import auth
